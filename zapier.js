@@ -2,20 +2,7 @@
 // you can use await throughout the function
 
 async function testing(inputData) {
-  const {
-    skus,
-    potentialId,
-    company,
-    name,
-    phone,
-    street1,
-    city,
-    postalCode,
-    state,
-    customerEmail,
-    orderDate,
-    internalNotes,
-  } = inputData;
+  const { skus } = inputData;
 
   const products = {
     "sample-cln-acne-cleanser-aqua": "[Samples] Acne Cleanser 1 fl oz",
