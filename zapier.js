@@ -1,8 +1,7 @@
-// this is wrapped in an `async` function
-// you can use await throughout the function
+// This is the Zapier version of our helper function b/c Zapier syntax is different. We use the helper function for jest test.
 
 async function testing(inputData) {
-  const { skus } = inputData;
+  const { skus, quantities } = inputData;
 
   const products = {
     "sample-cln-acne-cleanser-aqua": "[Samples] Acne Cleanser 1 fl oz",
@@ -17,12 +16,15 @@ async function testing(inputData) {
 
   //create array of skus
   const skuArray = skus.split(",");
+  const quantityArray = quantities.split(",");
 
   let items = [];
 
-  await skuArray.forEach((sku) => {
+  await skuArray.forEach((sku, index) => {
     let name = products[sku];
-    items.push({ sku, name, quantity: 1, price: 0.0 });
+    let quantity = +quantityArray[index];
+
+    items.push({ sku, name, quantity, price: 0.0 });
   });
 
   // you have to return an object. If you return an object with an array of objects zapier will execute the following step multiple times.
